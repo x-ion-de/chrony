@@ -35,14 +35,14 @@ if !node['chrony']['servers'].empty?
   keys = node['chrony']['servers'].keys.sort
   count = 3
   count = keys.length if keys.length < count
-  count.times { |x| node['chrony']['initslewstep'] += " #{keys[x]}" }
+  count.times { |x| node.default['chrony']['initslewstep'] += " #{keys[x]}" }
 else # else use first 3 clients
   clients = search(:node, 'recipes:chrony\:\:client').sort || []
   unless clients.empty?
     node.default['chrony']['initslewstep'] = 'initslewstep 10'
     count = 3
     count = clients.length if clients.length < count
-    count.times { |x| node['chrony']['initslewstep'] += " #{clients[x].ipaddress}" }
+    count.times { |x| node.default['chrony']['initslewstep'] += " #{clients[x].ipaddress}" }
   end
 end
 
