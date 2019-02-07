@@ -38,3 +38,15 @@ default['chrony']['allow'] = ['allow']
 
 # set in the client & master recipes
 default['chrony']['initstepslew'] = ''
+
+# internal attributes
+default['chrony']['package'] = 'chrony'
+default['chrony']['service'] = 'chrony'
+default['chrony']['conffile'] = '/etc/chrony/chrony.conf'
+
+# overrides on a platform-by-platform basis
+case node['platform_family']
+when 'amazon'
+  default['chrony']['service'] = 'chronyd'
+  default['chrony']['conffile'] = '/etc/chrony.conf'
+end
