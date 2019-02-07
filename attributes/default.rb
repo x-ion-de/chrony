@@ -31,4 +31,4 @@ default['chrony']['server_options'] = 'offline minpoll 8'
 default['chrony']['allow'] = ['allow']
 
 # set in the client & master recipes
-default['chrony']['initslewstep'] = ''
+default['chrony']['initstepslew'] = ''
