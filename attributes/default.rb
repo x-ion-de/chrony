@@ -18,7 +18,13 @@
 #
 
 # hash of default servers in the chrony.conf from Ubuntu
-default['chrony']['servers'] = {
+default['chrony']['servers'] = {}
+
+# The syntax of this directive is similar to that for the server directive,
+# except that it is used to specify a pool of NTP servers rather than a single
+# NTP server. The pool name is expected to resolve to multiple addresses which
+# might change over time.
+default['chrony']['pools'] = {
   '0.debian.pool.ntp.org' => 'offline minpoll 8',
   '1.debian.pool.ntp.org' => 'offline minpoll 8',
   '2.debian.pool.ntp.org' => 'offline minpoll 8',
